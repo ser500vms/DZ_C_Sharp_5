@@ -3,7 +3,7 @@
 // [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
 
 
-(double minValue, double maxValue) FindMinMax(double[] array)
+(double minValue, double maxValue, double difference) FindMinMax(double[] array)
 {
     double minValue = array[0];
     double maxValue = array[0];
@@ -20,8 +20,9 @@
             maxValue = array[i];
         }
     }
+    double difference = maxValue - minValue;
 
-    return (minValue, maxValue);
+    return (minValue, maxValue, difference);
 }
 
 double[] GenerateRandomArray(int size, double minValue, double maxValue)
@@ -37,7 +38,6 @@ double[] GenerateRandomArray(int size, double minValue, double maxValue)
 double[] array = GenerateRandomArray(10, -100, 100);
 Console.Write($"[{String.Join(", ", array.Select(x => x.ToString("F2"))) }]");
 
-(double minValue, double maxValue) = FindMinMax(array);
-double differenceMaxAndMin = maxValue - minValue;
+(double minValue, double maxValue, double difference) = FindMinMax(array);
 
-Console.Write($" => {maxValue:F2} - {minValue:F2} = {differenceMaxAndMin:F2}");
+Console.Write($" => {Math.Round(maxValue, 2)} - {Math.Round(minValue, 2)} = {Math.Round(difference, 2)}");
