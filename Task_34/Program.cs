@@ -3,14 +3,12 @@
 // чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-int ShowEvenNumber(int[] array)
+int CountEvenNumber(int[] array)
 {
     int numberOfEvenNumbers = 0;
-    int remainderOfTheDivision = 0;
     for (int i = 0; i < array.Length; i++)
     {
-        remainderOfTheDivision = array[i] % 2;
-        if (remainderOfTheDivision == 0)
+        if (0 == array[i] % 2)
         {
             numberOfEvenNumbers++;
         }
@@ -30,5 +28,5 @@ int[] GenerateRandomArray(int size, int start, int finish)
 
 int[] array = GenerateRandomArray(10, 100, 999);
 Console.Write($"[{String.Join(", ", array)}]");
-int numberOfEvenNumbers = ShowEvenNumber(array);
+int numberOfEvenNumbers = CountEvenNumber(array);
 Console.Write($" -> {numberOfEvenNumbers}");
