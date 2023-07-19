@@ -3,7 +3,24 @@
 // чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
-int CountEvenNumber(int[] array)
+(int size, int start, int finish) AskArray ()
+{
+    Console.Write("Задайте размер одномерного массива: ");
+    int size = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите значение начала массива: ");
+    int start = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите значение конца массива: ");
+    int finish = Convert.ToInt32(Console.ReadLine());
+    if (start < 99 || start > 999 || finish < 99 || finish > 999)
+    {
+        Console.Write("Вы ввели неверное значение, должно быть 3-х значное число");
+        Console.WriteLine(" ");
+        AskArray();
+    }
+    return (size, start, finish);
+}
+
+int CountEvenNumber (int[] array)
 {
     int numberOfEvenNumbers = 0;
     for (int i = 0; i < array.Length; i++)
@@ -16,7 +33,7 @@ int CountEvenNumber(int[] array)
     return numberOfEvenNumbers;
 }
 
-int[] GenerateRandomArray(int size, int start, int finish)
+int[] GenerateRandomArray (int size, int start, int finish)
 {
     int[] array = new int[size];
     for (int i = 0; i < size; i++)
@@ -26,7 +43,8 @@ int[] GenerateRandomArray(int size, int start, int finish)
     return array;
 }
 
-int[] array = GenerateRandomArray(10, 100, 999);
+(int size, int start, int finish) = AskArray ();
+int[] array = GenerateRandomArray (size, start, finish);
 Console.Write($"[{String.Join(", ", array)}]");
-int numberOfEvenNumbers = CountEvenNumber(array);
+int numberOfEvenNumbers = CountEvenNumber (array);
 Console.Write($" -> {numberOfEvenNumbers}");
